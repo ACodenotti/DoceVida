@@ -1,0 +1,196 @@
+/* Estilo do botão flutuante (bolinha) */
+#btn-fechar-chat {
+    margin-bottom: 60px;
+    bottom: 30px;
+    right: 30px;
+}
+
+.btn-abrir-chat {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #bfae9e; /* marrom claro pastel */
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: box-shadow 0.3s, background 0.3s;
+}
+.btn-abrir-chat:hover {
+    background: #734f28;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+.btn-abrir-chat ion-icon {
+    font-size: 2rem;
+    color: #fff;
+}
+
+/* Caixa do chat */
+#janela-chat {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 340px;
+    max-width: 90vw;
+    height: 600px; /* Altura fixa */
+    background: #fff;
+    border-radius: 18px 18px 12px 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1100;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(10px) scale(1);
+    transition: opacity 0.7s, transform 0.7s cubic-bezier(.22,1.15,.5,1.01);
+}
+
+.janela-chat-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(60px) scale(0.7);
+    transition: opacity 0.7s, transform 0.7s cubic-bezier(.22,1.15,.5,1.01);
+}
+
+.header-chat {
+    background: #bfae9e;
+    color: #fff;
+    padding: 16px 18px 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-chat-título h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.seletor-ia {
+    margin-top: 10px;
+    margin-left: 1px;
+    border-radius: 8px;
+    border: none;
+    padding: 4px 8px;
+    background: #e6ded7;
+    color: #6d4c2c;
+    font-size: 0.95rem;
+}
+.header-chat button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.2s;
+}
+.header-chat button:hover {
+    color: #6d4c2c;
+}
+
+.corpo-chat {
+    flex: 1;
+    background: #f8f6f3;
+    padding: 16px 10px 10px 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0; /* Para flex funcionar corretamente */
+    max-height: 100%; /* Garante que não ultrapasse a caixa */
+}
+
+.mensagem-bot, .mensagem-usuario {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 1rem;
+    word-break: break-word;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.mensagem-bot {
+    align-self: flex-start;
+    background: #e6ded7;
+    color: #6d4c2c;
+    border-bottom-left-radius: 4px;
+}
+.mensagem-usuario {
+    align-self: flex-end;
+    background: #fff;
+    color: #6d4c2c;
+    border-bottom-right-radius: 4px;
+    border: 1px solid #e6ded7;
+}
+.mensagem-bot-digitando {
+    align-self: flex-start;
+    background: #e6ded7;
+    color: #bfae9e;
+    font-style: italic;
+    border-radius: 16px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+}
+
+.rodape-chat {
+    background: #f8f6f3;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #e6ded7;
+}
+.rodape-chat input[type="text"] {
+    flex: 1;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    background: #fff;
+    color: #6d4c2c;
+    outline: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.rodape-chat button {
+    background: #bfae9e;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.rodape-chat button:hover {
+    background: #8c6749;
+}
+.rodape-chat ion-icon {
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 500px) {
+    #janela-chat {
+        width: 98vw;
+        right: 1vw;
+        left: unset;
+        bottom: 10px;
+    }
+    .btn-abrir-chat {
+        right: 10px;
+        bottom: 10px;
+    }
+}

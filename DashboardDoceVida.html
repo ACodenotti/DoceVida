@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Vida - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="DashboardDVestilo.css">
+    <style>
+        /* Custom CSS for transitions */
+        .sidebar-item.active {
+            background-color: rgba(255, 133, 162, 0.2);
+            border-left: 3px solid #FF85A2;
+        }
+        .sidebar-item:hover:not(.active) {
+            background-color: rgba(255, 133, 162, 0.1);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-white border-r border-gray-200">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="flex items-center">
+                        <i class="fas fa-heart text-3xl text-[#FF85A2] mr-2"></i>
+                        <img id="Logo" src="Logo_DV-removebg-preview.png" alt="Logo-doce-vida">
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="navegação">
+                    <nav class="flex-1 space-y-2">
+                        <a href="#" data-section="dashboard" class="sidebar-item active flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-tachometer-alt mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Painel Geral</span>
+                        </a>
+                        <a href="#" data-section="orders" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-shopping-bag mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Encomendas</span>
+                        </a>
+                        <a href="#" data-section="messages" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-envelope mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Mensagens</span>
+                            <span class="ml-auto px-2 py-1 text-xs font-medium bg-[#FF85A2] text-white rounded-full">3</span>
+                        </a>
+                        <a href="#" data-section="gallery" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-images mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Galeria</span>
+                        </a>
+                        <a href="#" data-section="products" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-box-open mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Produtos</span>
+                        </a>
+                    </nav>
+                    
+                    <!-- User Profile -->
+                    <div class="mt-auto pb-4">
+                        <div class="flex items-center px-4 py-3 mt-4 bg-gray-100 rounded-lg">
+                            <img class="w-10 h-10 rounded-full object-cover" src="https://via.placeholder.com/150" alt="User profile">
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-700">Giselle Girão</p>
+                                <p class="text-xs text-gray-500">Administradora</p>
+                            </div>
+                            <a href="#" class="ml-auto text-gray-400 hover:text-gray-500">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile sidebar button -->
+        <div class="md:hidden fixed bottom-4 right-4 z-50">
+            <button id="mobile-menu-button" class="p-3 rounded-full bg-[#FF85A2] text-white shadow-lg">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile sidebar (hidden by default) -->
+        <div id="mobile-sidebar" class="fixed inset-0 z-40 hidden bg-gray-900 bg-opacity-50">
+            <div class="fixed inset-y-0 left-0 max-w-xs w-full bg-white shadow-lg">
+                <div class="flex items-center justify-between h-20 px-4 bg-white border-b border-gray-200">
+                    <div class="flex items-center">
+                        <i class="fas fa-heart text-3xl text-[#FF85A2] mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">Doce Vida</span>
+                    </div>
+                    <button id="close-mobile-menu" class="text-gray-500 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="h-full overflow-y-auto py-4 px-2">
+                    <nav class="space-y-2">
+                        <a href="#" data-section="dashboard" class="sidebar-item active flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-tachometer-alt mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Painel Geral</span>
+                        </a>
+                        <a href="#" data-section="orders" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-shopping-bag mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Encomendas</span>
+                        </a>
+                        <a href="#" data-section="messages" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-envelope mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Mensagens</span>
+                            <span class="ml-auto px-2 py-1 text-xs font-medium bg-[#FF85A2] text-white rounded-full">3</span>
+                        </a>
+                        <a href="#" data-section="gallery" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-images mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Galeria</span>
+                        </a>
+                        <a href="#" data-section="products" class="sidebar-item flex items-center px-4 py-3 text-gray-700 rounded-lg">
+                            <i class="fas fa-box-open mr-3 text-[#A267AC]"></i>
+                            <span class="font-medium">Produtos</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <!-- Top Navigation -->
+            <header class="bg-white border-b border-gray-200">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div class="flex items-center">
+                        <h1 class="text-xl font-semibold text-gray-800" id="page-title">Painel Geral</h1>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="p-2 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none">
+                            <i class="fas fa-bell"></i>
+                            <span class="absolute top-3 right-3 h-2 w-2 rounded-full bg-[#FF85A2]"></span>
+                        </button>
+                        <div class="relative md:hidden">
+                            <button id="user-menu-button" class="flex items-center focus:outline-none">
+                                <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/150" alt="User profile">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto p-6 bg-gray-50">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="content-section active">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                        <!-- Card 1 -->
+                        <div id="card1">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-[#FFD6C0] text-[#FF85A2] mr-4">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Encomendas Ativas</p>
+                                    <p class="text-2xl font-semibold text-gray-700">12</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 2 -->
+                        <div id="card2">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-[#E8D0F2] text-[#A267AC] mr-4">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Receita Mensal</p>
+                                    <p class="text-2xl font-semibold text-gray-700">R$ 5,240</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div id="card3">
+                            <div id="texto3">
+                                <div class="p-3 rounded-full bg-[#E8D0F2] text-[#A267AC] mr-4">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Mensagens</p>
+                                    <p class="text-2xl font-semibold text-gray-700">3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Orders -->
+                    <div class="bg-white rounded-lg shadow p-6 mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-lg font-semibold text-gray-800">Encomendas Recentes</h2>
+                            <a href="#" class="text-sm text-[#FF85A2] hover:underline">Ver todas</a>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Placeholder rows -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">#DV1001</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Maria Silva</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10/05/2023</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">R$ 120,00</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Entregue</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <a href="#" class="text-[#FF85A2] hover:text-[#A267AC] mr-3"><i class="fas fa-eye"></i></a>
+                                            <a href="#" class="text-[#FF85A2] hover:text-[#A267AC]"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                    <!-- More placeholder rows... -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-4">Vendas por Mês</h2>
+                            <div class="h-64 bg-gray-100 rounded flex items-center justify-center">
+                                <p class="text-gray-500">Gráfico de vendas aqui</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <h2 class="text-lg font-semibold text-gray-800 mb-4">Produtos Populares</h2>
+                            <div class="space-y-4">
+                                <!-- Placeholder for popular products -->
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-[#FFD6C0] flex items-center justify-center text-[#FF85A2] mr-3">
+                                        <i class="fas fa-cookie"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-sm font-medium text-gray-900">Bolo de Chocolate</p>
+                                        <p class="text-xs text-gray-500">15 vendas este mês</p>
+                                    </div>
+                                </div>
+                                <!-- More placeholder products... -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Orders Section -->
+                <div id="orders" class="content-section">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-6">Gerenciar Encomendas</h2>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produtos</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Placeholder rows -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">#DV1001</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Maria Silva</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bolo, Cupcakes</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">R$ 120,00</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Entregue</span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <button class="text-[#FF85A2] hover:text-[#A267AC] mr-3"><i class="fas fa-eye"></i></button>
+                                            <button class="text-[#FF85A2] hover:text-[#A267AC]"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <!-- More placeholder rows... -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <div class="text-sm text-gray-500">Mostrando 1 a 5 de 25 encomendas</div>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 rounded bg-gray-200 text-gray-700"><i class="fas fa-chevron-left"></i></button>
+                                <button class="px-3 py-1 rounded bg-[#FF85A2] text-white">1</button>
+                                <button class="px-3 py-1 rounded bg-gray-200 text-gray-700">2</button>
+                                <button class="px-3 py-1 rounded bg-gray-200 text-gray-700"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Messages Section -->
+                <div id="messages" class="content-section">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-6">Mensagens dos Clientes</h2>
+                        <div class="space-y-4">
+                            <!-- Message 1 -->
+                            <div class="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 rounded-full bg-[#FFD6C0] flex items-center justify-center text-[#FF85A2] mr-3">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-gray-900">Ana Carolina</p>
+                                            <p class="text-sm text-gray-500">ana@example.com</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs text-gray-500">2 dias atrás</span>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-gray-700">Olá, gostaria de saber se vocês fazem bolos para casamentos...</p>
+                                </div>
+                                <div class="mt-3 flex justify-end">
+                                    <button class="px-3 py-1 bg-[#FF85A2] text-white rounded text-sm hover:bg-[#A267AC]">Responder</button>
+                                </div>
+                            </div>
+                            <!-- More placeholder messages... -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Section -->
+                <div id="gallery" class="content-section">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Galeria de Imagens</h2>
+                            <button class="px-4 py-2 bg-[#FF85A2] text-white rounded hover:bg-[#A267AC]">
+                                <i class="fas fa-plus mr-2"></i>Adicionar Imagem
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <!-- Image placeholder -->
+                            <div class="relative group">
+                                <div class="aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden">
+                                    <div class="w-full h-full flex items-center justify-center">
+                                        <i class="fas fa-image text-4xl text-gray-400"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
+                                    <button class="p-2 bg-white rounded-full text-[#FF85A2] hover:bg-[#FF85A2] hover:text-white mx-1">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="p-2 bg-white rounded-full text-[#FF85A2] hover:bg-[#FF85A2] hover:text-white mx-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="p-2 bg-white rounded-full text-red-500 hover:bg-red-500 hover:text-white mx-1">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- More image placeholders... -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products Section -->
+                <div id="products" class="content-section">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-xl font-semibold text-gray-800">Produtos</h2>
+                            <button class="px-4 py-2 bg-[#FF85A2] text-white rounded hover:bg-[#A267AC]">
+                                <i class="fas fa-plus mr-2"></i>Adicionar Produto
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Imagem</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoria</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Preço</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estoque</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <!-- Product 1 -->
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="w-10 h-10 rounded-full bg-[#FFD6C0] flex items-center justify-center text-[#FF85A2]">
+                                                <i class="fas fa-cookie"></i>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Bolo de Chocolate</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bolos</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">R$ 45,00</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            <button class="text-[#FF85A2] hover:text-[#A267AC] mr-3"><i class="fas fa-edit"></i></button>
+                                            <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <!-- More product placeholders... -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    <script>
+        // Toggle between content sections
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all sidebar items
+                document.querySelectorAll('.sidebar-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Hide all content sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the selected content section
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Update page title
+                const pageTitle = this.querySelector('span').textContent;
+                document.getElementById('page-title').textContent = pageTitle;
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-sidebar').classList.add('hidden');
+            });
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-sidebar').classList.remove('hidden');
+        });
+        
+        document.getElementById('close-mobile-menu').addEventListener('click', function() {
+            document.getElementById('mobile-sidebar').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

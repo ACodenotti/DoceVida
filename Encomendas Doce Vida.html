@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Vida - Encomendas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="SiteDoceVida.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f5f0;
+        }
+        
+        .bg-pastel-brown {
+            background-color: #d7ccc8;
+        }
+        
+        .text-pastel-brown {
+            color: #8d6e63;
+        }
+        
+        .border-pastel-brown {
+            border-color: rgba(215, 204, 200, 0.5);
+        }
+        
+        .btn-brown {
+            background-color: rgba(215, 204, 200, 0.5);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .btn-brown:hover {
+            background-color: #8d6e63;
+        }
+        
+        .input-focus:focus {
+            border-color: rgba(215, 204, 200, 0.5);
+            box-shadow: 0 0 0 3px rgba(161, 136, 127, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-pastel-brown py-2 shadow-md">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                <a href="#" class="flex items-center">
+                    <i class="logo-doce-vida-formulário"> <img src="Logo_Doce_Vida_certa-removebg-preview.png" alt="Logo_Doce_Vida"></i>
+                    <h1 class="text-2xl font-semibold text-pastel-brown">Doce Vida</h1>
+                </a>
+                <a href="Doce Vida.html" class="flex items-center text-pastel-brown hover:text-gray-700 transition">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Voltar
+                </a>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- Form Header -->
+                <div class="bg-pastel-brown py-4 px-6">
+                    <h2 class="text-2xl font-semibold text-pastel-brown">Faça sua encomenda</h2>
+                    <p class="text-pastel-brown mt-1">Preencha o formulário abaixo para encomendar seus doces especiais</p>
+                </div>
+                
+                <!-- Form -->
+                <form class="p-6">
+                    <div class="mb-6">
+                        <label for="nome" class="block text-pastel-brown font-medium mb-2">Nome completo</label>
+                        <input type="text" id="nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" placeholder="Seu nome" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="contato" class="block text-pastel-brown font-medium mb-2">Contato (WhatsApp)</label>
+                        <input type="tel" id="contato" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" placeholder="(00) 00000-0000" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="tipo" class="block text-pastel-brown font-medium mb-2">Tipo de doce</label>
+                        <select id="tipo" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" required>
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="bolo">Bolo de Aniversário</option>
+                            <option value="cupcake">Cupcakes</option>
+                            <option value="brigadeiro">Brigadeiros Gourmet</option>
+                            <option value="beijinho">Beijinhos</option>
+                            <option value="torta">Tortas Doces</option>
+                            <option value="outro">Outro (especifique abaixo)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6 hidden" id="outro-container">
+                        <label for="outro" class="block text-pastel-brown font-medium mb-2">Especifique o doce</label>
+                        <input type="text" id="outro" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" placeholder="Descreva o doce desejado">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="sabor" class="block text-pastel-brown font-medium mb-2">Sabor preferido</label>
+                        <input type="text" id="sabor" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" placeholder="Ex: Chocolate, Baunilha, Morango..." required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="quantidade" class="block text-pastel-brown font-medium mb-2">Quantidade aproximada</label>
+                        <input type="text" id="quantidade" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" placeholder="Ex: 1 bolo grande, 50 brigadeiros..." required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="data" class="block text-pastel-brown font-medium mb-2">Data para entrega/retirada</label>
+                        <input type="date" id="data" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="endereco" class="block text-pastel-brown font-medium mb-2">Endereço para entrega (ou marque retirada)</label>
+                        <textarea id="endereco" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" placeholder="Informe o endereço completo ou escreva 'Retirada no local'"></textarea>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="mensagem" class="block text-pastel-brown font-medium mb-2">Mensagem adicional</label>
+                        <textarea id="mensagem" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none input-focus" placeholder="Alguma observação especial, tema do aniversário, restrição alimentar, etc."></textarea>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <a href="Doce Vida.html" class="text-pastel-brown hover:text-gray-700 transition flex items-center">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Voltar
+                        </a>
+                        <button type="submit" class="btn-enviar-encomenda">
+                            Enviar Encomenda
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="bg-pastel-brown py-6">
+            <div class="container mx-auto px-4 text-center text-pastel-brown">
+                <p>© 2023 Doce Vida. Todos os direitos reservados.</p>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="https://www.instagram.com/docevidagisellegirao?igsh=MWxwZ2Voa2d2aTUweQ==" class="hover:text-gray-700 transition"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=5561981568044" class="hover:text-gray-700 transition"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mostrar campo "outro" quando selecionado
+        document.getElementById('tipo').addEventListener('change', function() {
+            const outroContainer = document.getElementById('outro-container');
+            if (this.value === 'outro') {
+                outroContainer.classList.remove('hidden');
+                document.getElementById('outro').required = true;
+            } else {
+                outroContainer.classList.add('hidden');
+                document.getElementById('outro').required = false;
+            }
+        });
+
+        // Máscara para telefone
+        document.getElementById('contato').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.substring(0, 11);
+            
+            if (value.length > 2) {
+                value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+            }
+            if (value.length > 10) {
+                value = `${value.substring(0, 10)}-${value.substring(10)}`;
+            }
+            
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

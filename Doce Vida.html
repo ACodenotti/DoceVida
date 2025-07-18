@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doce Vida - Confeitaria Artesanal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="ChatBotestilo.css">
+    <link rel="stylesheet" href="SiteDoceVida.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pastel-brown': '#D7CCC8',
+                        'light-pink': '#F8BBD0',
+                        'mint': '#C8E6C9',
+                        'vanilla': '#FFF9C4',
+                        'lavender': '#E1BEE7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-image {
+            background-image: linear-gradient(rgba(215, 204, 200, 0.5), rgba(215, 204, 200, 0.5)), url('https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .sweet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .nav-link:hover {
+            color: #5D4037;
+        }
+    </style>
+</head>
+<body class="bg-pastel-brown font-sans">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50 h-17">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="logo-doce-vida"><img src="Logo_Doce_Vida_certa-removebg-preview.png" alt="Logo Doce Vida"></i>
+                <h1 class="text-2xl font-bold text-pastel-brown">Doce Vida</h1>
+            </div>
+            
+            <nav class="cabeçalho">
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Home</a></li>
+                    <li><a href="#about" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Sobre</a></li>
+                    <li><a href="#products" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Produtos</a></li>
+                    <li><a href="#gallery" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Galeria</a></li>
+                    <li><a href="#contact" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button class="md:hidden text-pastel-brown text-2xl" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4" id="mobile-menu">
+            <ul class="flex flex-col space-y-4">
+                <li><a href="#home" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Home</a></li>
+                <li><a href="#about" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Sobre</a></li>
+                <li><a href="#products" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Produtos</a></li>
+                <li><a href="#gallery" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Galeria</a></li>
+                <li><a href="#contact" class="nav-link text-pastel-brown hover:text-brown-800 font-medium transition">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-image h-screen flex items-center justify-center text-center px-4">
+        <div class="bg-white bg-opacity-90 p-8 rounded-lg max-w-2xl">
+            <h2 class="text-4xl md:text-5xl font-bold text-pastel-brown mb-4">Doce Vida</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-6">Confeitaria artesanal feita com amor e ingredientes naturais</p>
+            <a href="#products" class="btn-doces">Nossos Doces</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-pastel-brown mb-12">Nossa História</h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Equipe Doce Vida" class="rounded-lg shadow-lg w-full">
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-pastel-brown mb-4">Doce Vida desde 2010</h3>
+                    <p class="text-gray-700 mb-4">Fundada por Giselle Girão, a Doce Vida nasceu do amor pela confeitaria e do desejo de adoçar momentos especiais. Hoje trabalhamos com encomendas em todo o Distrito Federal</p>
+                    <p class="text-gray-700 mb-6">Com preparo artesanal, priorizamos bolos e docinhos de festa, feitos com ingredientes selecionados, sem nenhum tipo de conservante artificial - sempre com carinho e sabor de verdade.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-pastel-brown bg-opacity-30 p-4 rounded-lg">
+                            <i class="fas fa-heart text-pastel-brown text-2xl mb-2"></i>
+                            <h4 class="font-semibold text-pastel-brown">Feito com Amor</h4>
+                            <p class="text-sm text-gray-700">Cada doce é preparado com dedicação</p>
+                        </div>
+                        <div class="bg-pastel-brown bg-opacity-30 p-4 rounded-lg">
+                            <i class="fas fa-leaf text-pastel-brown text-2xl mb-2"></i>
+                            <h4 class="font-semibold text-pastel-brown">Ingredientes Naturais</h4>
+                            <p class="text-sm text-gray-700">Priorizamos qualidade e saúde</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-pastel-brown">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">Nossos Produtos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white sweet-card rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1989&q=80" alt="Bolo de Chocolate" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-pastel-brown mb-2">Bolos Artesanais</h3>
+                        <p class="text-gray-700 mb-4">Bolos feitos sob encomenda com diversos sabores e recheios. Perfeitos para festas e comemorações.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-pastel-brown">A partir de R$ 80,00</span>
+                            <a href="Encomendas Doce Vida.html"><button class="btn-encomendar">Encomendar</button></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white sweet-card rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cupcakes" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-pastel-brown mb-2">Cupcakes</h3>
+                        <p class="text-gray-700 mb-4">Deliciosos cupcakes com diversos sabores e decorações personalizadas. Ideal para presentear.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-pastel-brown">R$ 12,00 cada</span>
+                            <a  href="Encomendas Doce Vida.html"><button class="btn-encomendar">Encomendar</button></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white sweet-card rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Docinhos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-pastel-brown mb-2">Docinhos Finos</h3>
+                        <p class="text-gray-700 mb-4">Variedade de docinhos para festas e eventos. Brigadeiros, beijinhos, cajuzinhos e muito mais.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-pastel-brown">R$ 3,50 cada</span>
+                            <a  href="Encomendas Doce Vida.html"><button class="btn-encomendar">Encomendar</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-white hover:bg-gray-100 text-pastel-brown font-bold py-3 px-8 rounded-full transition duration-300 border border-pastel-brown">Ver Todos os Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-pastel-brown mb-12">Nossa Galeria</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2092&q=80" alt="Doce 1" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+                <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Doce 2" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Doce 3" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+                <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Doce 4" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1989&q=80" alt="Doce 5" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+                <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Doce 6" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+                <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Doce 7" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+                <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Doce 8" class="rounded-lg shadow-md hover:shadow-xl transition cursor-pointer w-full h-48 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-pastel-brown bg-opacity-30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-pastel-brown mb-12">O que dizem nossos clientes</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pastel-brown flex items-center justify-center text-white font-bold">M</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Mariana Silva</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"O bolo de aniversário da minha filha foi um sucesso! Todos elogiaram o sabor e a decoração linda. Super recomendo a Doce Vida!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pastel-brown flex items-center justify-center text-white font-bold">C</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Carlos Eduardo</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Compro os docinhos para todos os eventos da empresa. Sempre fresquinhos e deliciosos, com um atendimento impecável!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pastel-brown flex items-center justify-center text-white font-bold">J</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Juliana Costa</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Adoro os cupcakes da Doce Vida! São perfeitos para presentear e sempre fazem sucesso. A embalagem é linda e os sabores incríveis."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-pastel-brown mb-12">Entre em Contato</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-pastel-brown rounded-lg focus:ring-2 focus:ring-pastel-brown focus:border-pastel-brown">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-pastel-brown rounded-lg focus:ring-2 focus:ring-pastel-brown focus:border-pastel-brown">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-pastel-brown rounded-lg focus:ring-2 focus:ring-pastel-brown focus:border-pastel-brown">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-pastel-brown rounded-lg focus:ring-2 focus:ring-pastel-brown focus:border-pastel-brown"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-enviar-mensagem">Enviar Mensagem</button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-pastel-brown bg-opacity-20 p-6 rounded-lg h-full">
+                        <h3 class="text-xl font-semibold text-pastel-brown mb-4">Informações de Contato</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-pastel-brown mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Endereço</h4>
+                                    <p class="text-gray-700">Águas Claras<br>Distrito Federal</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-pastel-brown mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Telefone</h4>
+                                    <p class="text-gray-700">(61) 998156-8044 - Giselle Girão</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-pastel-brown mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">E-mail</h4>
+                                    <p class="text-gray-700">gisellegirao@hotmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-medium text-gray-800 mb-3">Siga-nos nas redes sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/docevidagisellegirao?igsh=MWxwZ2Voa2d2aTUweQ==" class="text-pastel-brown hover:text-brown-700 text-2xl"><i class="fab fa-instagram"></i></a>
+                                <a href="https://api.whatsapp.com/send?phone=5561981568044" class="text-pastel-brown hover:text-brown-700 text-2xl"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-pastel-brown bg-opacity-30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-pastel-brown mb-12">Perguntas Frequentes</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-4 font-medium text-pastel-brown flex justify-between items-center">
+                        <span>Como faço para encomendar um bolo?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-4 text-gray-700">
+                        <p>Você pode entrar em contato conosco pelo telefone, Instagram, WhatsApp ou através do formulário em nosso site. Recomendamos fazer a encomenda com pelo menos 3 dias de antecedência para bolos simples e 7 dias para bolos de aniversário ou bem decorados.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-4 font-medium text-pastel-brown flex justify-between items-center">
+                        <span>Vocês entregam em toda a cidade?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-4 text-gray-700">
+                        <p>Entregamos em toda a região central e bairros próximos sem custo adicional. Para locais mais distantes, cobramos uma taxa de entrega que varia de acordo com a distância. Consulte-nos para verificar se entregamos no seu endereço.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-4 font-medium text-pastel-brown flex justify-between items-center">
+                        <span>Vocês fazem doces para pessoas com restrições alimentares?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-4 text-gray-700">
+                        <p>Sim, oferecemos opções sem glúten, sem lactose e veganas. No entanto, informamos que nossa cozinha não é totalmente livre de alérgenos, portanto, pode haver risco de contaminação cruzada para pessoas com alergias severas.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full text-left p-4 font-medium text-pastel-brown flex justify-between items-center">
+                        <span>Qual é o prazo de validade dos doces?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-4 pb-4 text-gray-700">
+                        <p>Nossos produtos não contêm conservantes artificiais, portanto têm validade reduzida. Bolos e tortas devem ser consumidos em até 3 dias quando refrigerados. Docinhos duram até 5 dias na geladeira e cupcakes 2-3 dias em temperatura ambiente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brown-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-candy-cane text-2xl text-pastel-brown mr-2"></i>
+                        <h3 class="text-xl font-bold text-pastel-brown">Doce Vida</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Confeitaria artesanal desde 2010</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-6 mb-4">
+                        <a href="https://www.instagram.com/docevidagisellegirao?igsh=MWxwZ2Voa2d2aTUweQ==" class="text-gray-300 hover:text-pastel-brown transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=5561981568044" class="text-gray-300 hover:text-pastel-brown transition"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p class="text-sm text-gray-400">© 2023 Doce Vida. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                // Toggle content
+                content.classList.toggle('hidden');
+                
+                // Rotate icon
+                icon.classList.toggle('rotate-180');
+                
+                // Close other open FAQs
+                document.querySelectorAll('.faq-toggle').forEach(otherButton => {
+                    if (otherButton !== button) {
+                        otherButton.nextElementSibling.classList.add('hidden');
+                        otherButton.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+    </script>
+<!--- Chat BOT--> 
+<div class="container-chatbot">  <!--- Janelinha do Chat BOT--> 
+    <div id="janela-chat" class="hidden">  <!--- Janelinha do Chat BOT inicialmente oculta--> 
+        <div class="header-chat">  <!--- Cabeçalho do Chat BOT--> 
+            <div class="header-chat-título"> 
+                <h3>Fale com o Nino Bolinho 🧁</h3>  <!---Título da Janela do Chat BOT--> 
+                <h5>Sempre pronto pra adoçar seu dia!</h5>
+                <select id="seletor-ia" class="seletor-ia">  <!--- Opções de IA pro Chat BOT--> 
+                    <option value="gemini"> Gemini (Padrão)</option>
+                    <option value="claude" disabled> Claude (em breve)</option> <!--- Adicionar IA (opção atualmente desativada)-->
+                </select>
+            </div>
+            <button id="btn-fechar-chat">&times;</button>  <!--- Botão de fechar-->
+        </div>
+        <div id="corpo-chat" class="corpo-chat"> <!--- Tela de conversa que as mensagens aparecem-->
+            <div class="mensagem-bot"> <!--- Mensagem Inicial do bot-->
+                <span> 🍬 Cheguei quentinho do forno pra ajudar você com o que precisar. Vamos bater um papo?
+                </span>
+            </div> <!--- Fim da Mensagem Inicial do bot-->
+        </div>
+        <div class="rodape-chat">
+            <input type="text" id="input-chat" placeholder="Mensagem..."> <!--- Mensagem do usuário-->
+            <button id="btn-enviar-chat"> <!--- Botão de Enviar Mensagem do usuário-->
+                <ion-icon name="send-outline">➢</ion-icon> <!--- Ícone de Envio-->
+            </button> <!--- Fim do Botão de Enviar Mensagem do usuário-->
+        </div> <!--- Fim do Rodapé do Chat-->
+    </div> <!--- Fim da Janela do Chat-->
+</div>
+    <button id="btn-abrir-chat" class="btn-abrir-chat">
+        <ion-icon name="chatbubbles-outline">🗪</ion-icon> <!--- Ícone de Abrir Chat-->
+    </button>
+<script>
+//Funções Constantes
+
+    const btnAbrirChat = document.getElementById("btn-abrir-chat"); //Função botão de abrir a janela do chat
+    const janelaChat = document.getElementById("janela-chat"); //Função de janela do chat
+    const btnFecharChat = document.getElementById("btn-fechar-chat"); //Função de botão de fechar a janela do chat
+    const corpoChat = document.getElementById("corpo-chat"); //Função de corpo do chat onde as mensagens aparecem
+    const inputChat = document.getElementById("input-chat"); //Função de input do chat onde o usuário digita a mensagem
+    const btnEnviarChat = document.getElementById("btn-enviar-chat"); //Função de botão de enviar mensagem do usuário
+    const seletorIA = document.getElementById("seletor-ia"); //Função de seletor de IA do chat
+
+// Funções Variáveis
+
+    let historicoChat = []; // Variável para armazenar o histórico de mensagens do chat 
+   
+    const CHAVES_API  = { //Chaves de API para conectar as IA's 
+        gemini: "AIzaSyCMF1RqO2tjLcF7sjpQXq8nNXqRZ2nrBrU", //Chave de API do Gemini
+        claude: "" //Chave de API do Claude (em breve)
+
+    }; // Fim das chaves de API
+
+    btnAbrirChat.addEventListener("click", () => { // Evento de clique para abrir a janela do chat
+        janelaChat.classList.remove("hidden"); // Remove a classe que oculta a janela do chat
+        btnAbrirChat.classList.add("hidden"); // Oculta o botão de abrir chat
+    }); // Fim do evento de abrir a janela do chat
+
+    btnFecharChat.addEventListener("click", () => {
+        janelaChat.classList.add("hidden"); // Adiciona a classe 'hidden' que oculta a janela do chat
+        btnAbrirChat.classList.remove("hidden"); // Remove a classe 'hidden' que oculta o botão de abrir chat
+
+    }); // Fim do evento de fechar a janela do chat
+
+    const enviarMensagem = async () => { // Função para enviar a mensagem do usuário
+        const mensagemUsuario = inputChat.value.trim(); // Obtém a mensagem do usuário e remove espaços em branco no início e no final
+        if(mensagemUsuario === "")return; // Se a mensagem estiver vazia, não faz nada
+
+        adicionarMensagemNaTela(mensagemUsuario,'mensagem-usuario'); // Corrigido: Adiciona a mensagem do usuário na tela
+        inputChat.value = ''; // Limpa o campo de input após enviar a mensagem
+        historicoChat.push({ role: 'user', parts: [{ text: mensagemUsuario }] }); // Adiciona a mensagem do usuário ao histórico do chat
+
+        const divDigitando = adicionarMensagemNaTela('Digitando...', 'mensagem-bot-digitando'); // Corrigido: Adiciona uma mensagem de "Digitando" enquanto a IA responde
+
+        const iaSelecionada = seletorIA.value; // Obtém o valor do seletor de IA escolhido para saber qual provedor usar
+
+        try {
+            const respostaIA = await obterRespostaIA (iaSelecionada); // Corrigido: Chama a função correta para obter a resposta da IA
+            divDigitando.remove(); // Remove a mensagem de "Digitando" da tela
+            adicionarMensagemNaTela(respostaIA, 'mensagem-bot'); // Corrigido: Adiciona a resposta da IA na tela
+
+            historicoChat.push({ role: "model", parts:[{text: respostaIA}]}); // Adiciona a resposta da IA ao histórico do chat
+
+        } catch (error) {
+            console.error("Erro ao obter resposta", error); // Exibe um erro no console caso ocorra algum problema ao obter a resposta da IA
+            divDigitando.remove(); // Remove a mensagem de "Digitando" da tela
+            adicionarMensagemNaTela("Desculpe, não consegui me conectar, tente novamente mais tarde.", "mensagem-bot") // Corrigido: Adiciona uma mensagem de erro na tela
+
+            historicoChat.pop(); // Remove a última mensagem do histórico do chat, que seria a resposta da IA que falhou
+        } // Fim do bloco try-catch
+    } // Fim da função Enviar Mensagem
+
+    function adicionarMensagemNaTela(texto, classe) { 
+        const divMensagem = document.createElement("div"); // Cria um novo elemento div para a mensagem
+        divMensagem.className = classe; // Define a classe da div com base no tipo de mensagem (usuário ou bot)
+        divMensagem.innerHTML = `<span>${texto}</span>`; // Define o conteúdo da div com o texto da mensagem
+        corpoChat.appendChild(divMensagem); // Adiciona a nova mensagem ao corpo do chat
+        corpoChat.scrollTop = corpoChat.scrollHeight; // Rola o chat para baixo para mostrar a nova mensagem
+        return divMensagem; // Retorna a div da mensagem para possíveis manipulações futuras
+    } // Fim da função adicionar mensagem na tela
+
+    async function obterRespostaIA(provedor) { // Função para obter a resposta da IA com base no provedor selecionado
+        switch (provedor) { // Identifica o provedor de IA selecionado
+            case "gemini": // Chama a função para obter a resposta do Gemini
+                return await obterRespostaGemini(); // Chama a função para obter a resposta do Gemini
+            case "claude": // Chama a função para obter a resposta do Claude (em breve)
+                return await "Resposta Simulada do Claude: Olá! Como posso te ajudar hoje?"; // Simula uma resposta do Claude (em breve)
+            default: // Se o provedor não for reconhecido, lança um erro
+                return "Provedor de IA não reconhecido"; // Retorna uma mensagem de erro se o provedor não for reconhecido
+        } // Fim das opções/possibilidades do switch 
+    } // Fim da função obter resposta IA
+
+    async function obterRespostaGemini() {
+        const apiKey =  CHAVES_API.gemini; // Obtém a chave de API do Gemini
+        if (!apiKey) { // Verifica se a chave de API está definida
+            return "Chave de API do Gemini não configurada"; // Retorna uma mensagem de erro se a chave de API não estiver definida
+        } // Fim da verificação da chave de API
+
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`; // Define a URL da API do Gemini com a chave de API
+
+        const payload = {
+            contents: historicoChat, // Define o conteúdo do payload com o histórico do chat
+            systemInstruction: {
+                parts: [{
+                    text: "Você é o Nino Bolinho, um chatbot doce, acolhedor e muito simpático, especialista nos produtos e serviços da Doce Vida. Sua missão é ajudar os visitantes com informações claras, precisas e afetuosas sobre a empresa. Sempre responda de forma amigável, gentil e calorosa, como se estivesse falando com um amigo querido. Adote um tom envolvente, otimista e empático, transmitindo confiança e carinho em cada resposta. Utilize linguagem simples e acessível, com uma pitada de leveza e alegria. Quando possível, personalize suas respostas para que o usuário se sinta acolhido e especial." // Prompt de instrução do sistema
+                }] // Fim da parte da instrução do sistema
+            }
+        } // Fim do payload
+
+        const response = await fetch(apiUrl, { // Faz uma requisição para a API do Gemini
+            method: "POST", // Define o método da requisição como POST
+            headers: {"Content-Type": "application/json"}, // Define o cabeçalho da requisição como JSON
+            body: JSON.stringify(payload) // Converte o payload em uma string JSON para enviar na requisição
+        }); // Fim da requisição fetch
+
+        if (!response.ok) {// Verifica se a resposta da API é OK
+            throw new Error(`Erro na API do Gemini: ${response.statusText}`); // Lança um erro se a resposta da API não for OK
+        }
+
+        const resultado = await response.json(); // Converte a resposta da API para JSON
+
+        if (resultado.candidates && resultado.candidates.length > 0) { //Se houver candidatos na resposta da API
+            return resultado.candidates[0].content.parts[0].text; // Retorna o texto da primeira parte do primeiro candidato
+        } else { // Se não houver candidatos na resposta da API
+            return "Não consegui gerar uma resposta no momento."; // Retorna uma mensagem de erro
+        } // Fim da verificação de candidatos
+    } // Fim da função obter resposta Gemini
+
+    btnEnviarChat.addEventListener("click", enviarMensagem); // Adiciona um evento de clique no botão de enviar para chamar a função enviarMensagem
+    inputChat.addEventListener("keypress", (e) => { // Adiciona um evento de tecla pressionada no campo de input
+        if (e.key === 'Enter') enviarMensagem(); // Se a tecla pressionada for 'Enter', chama a função enviarMensagem
+    }); // Fim do evento de tecla pressionada
+</script> <!--- Fim do Script do Chat BOT-->
+</body>
+</html>

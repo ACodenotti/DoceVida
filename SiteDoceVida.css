@@ -1,0 +1,85 @@
+.logo-doce-vida {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 18px;
+}
+
+.cabeçalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: larger;
+}
+
+.logo-doce-vida-formulário {
+    width: 65px;
+    height: 65px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 18px;
+}
+
+.btn-doces {
+    background-color: #d1c6b9; /* pastel brown */
+    color: #fff;
+    font-weight: bold;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.btn-doces:hover {
+    background-color: #734f28; /* brown-700 */
+}
+
+.btn-encomendar {
+    background-color: #d1c6b9; /* pastel brown */
+    color: #fff;
+    font-size: 0.875rem; /* text-sm */
+    padding: 0.5rem 1rem; /* py-2 px-4 */
+    border-radius: 9999px; /* rounded-full */
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.btn-encomendar:hover {
+    background-color: #734f28; /* brown-700 */
+}
+
+.btn-enviar-mensagem {
+    width: 100%;
+    background-color: #d1c6b9; /* pastel brown */
+    color: #fff;
+    font-weight: bold;
+    padding: 0.75rem 1rem; /* py-3 px-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.btn-enviar-mensagem:hover {
+    background-color: #734f28; /* brown-700 */
+}
+
+.btn-enviar-encomenda {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.375rem;
+    background-color: #e5c0ae; /* example brown */
+    color: #fff;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.btn-enviar-encomenda:hover {
+    background-color: #a0522d;
+}
