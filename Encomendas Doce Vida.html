@@ -175,6 +175,25 @@
             
             e.target.value = value;
         });
+
+        // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+        
+     // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyB5BGUJu9NPOXt-OBJh0FdaO3qi014Fj6g",
+    authDomain: "projeto-doce-vida-b0c04.firebaseapp.com",
+    projectId: "projeto-doce-vida-b0c04",
+    storageBucket: "projeto-doce-vida-b0c04.firebasestorage.app",
+    messagingSenderId: "536273917992",
+    appId: "1:536273917992:web:1408cec850295002837d1d"
+    };
+     // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    //Local Para constante das mensagens
     </script>
 </body>
 </html>

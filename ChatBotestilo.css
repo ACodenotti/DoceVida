@@ -37,9 +37,9 @@
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 340px;
+    width: 430px;
     max-width: 90vw;
-    height: 600px; /* Altura fixa */
+    height: 650px; /* Altura fixa */
     background: #fff;
     border-radius: 18px 18px 12px 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
